@@ -1,19 +1,67 @@
 import api from "../api/axios";
+import AdminLayout from "../components/AdminLayout";
 
 export default function AdminFacts() {
   const submit = async (e) => {
     e.preventDefault();
-    await api.post("/facts", { text: e.target.text.value });
-    alert("Fact Added");
+
+    const formData = new FormData(e.target);
+
+    await api.post("/facts", formData);
+    alert("✅ Fact saved");
+    e.target.reset();
   };
 
   return (
-    <form onSubmit={submit} className="p-6 bg-white max-w-lg mx-auto">
-      <h2 className="text-xl text-primary">Add Fact</h2>
-      <textarea name="text" className="input h-32" />
-      <button className="mt-4 bg-primary text-white px-4 py-2 rounded">
-        Add
-      </button>
-    </form>
+    <AdminLayout
+      title="🌿 Daily Wellness Fact"
+      subtitle="This will be shared with users automatically"
+    >
+      <form
+        onSubmit={submit}
+        className="bg-white max-w-xl mx-auto rounded-xl shadow p-6 space-y-6"
+      >
+        {/* Caption */}
+        <div className="flex flex-col gap-2">
+          <label className="font-medium text-gray-700">
+            Caption
+          </label>
+          <textarea
+            name="text"
+            rows={4}
+            placeholder="Example: Practicing yoga daily improves flexibility and mental focus."
+            required
+            className="w-full rounded-lg border border-gray-300 px-4 py-3
+                       resize-none
+                       focus:outline-none focus:ring-2 focus:ring-green-600"
+          />
+        </div>
+
+        {/* Image Upload */}
+        <div className="flex flex-col gap-2">
+          <label className="font-medium text-gray-700">
+            Related Image (optional)
+          </label>
+          <input
+            type="file"
+            name="image"
+            accept="image/*"
+            className="block w-full text-sm text-gray-600
+                       file:mr-4 file:py-2 file:px-4
+                       file:rounded-lg file:border-0
+                       file:bg-green-100 file:text-green-700
+                       hover:file:bg-green-200"
+          />
+          <p className="text-xs text-gray-500">
+            Upload an image related to this wellness fact
+          </p>
+        </div>
+
+        {/* Submit */}
+        <button className="w-full bg-green-700 text-white py-3 rounded-lg text-lg hover:bg-green-800 transition">
+          Save Fact
+        </button>
+      </form>
+    </AdminLayout>
   );
 }
