@@ -1,4 +1,5 @@
-import founder from "../assets/founder.png";
+import founder from "../assets/founder.jpg";
+import HomeReviews from "../components/HomeReviews";
 
 export default function Home() {
   return (
@@ -7,7 +8,7 @@ export default function Home() {
       {/* HERO SECTION */}
       <section className="text-center py-20 px-6">
         <h1 className="text-5xl font-bold text-green-800 mb-4">
-          Yoga4U Wellness Center
+          YOGA4U Wellness Center
         </h1>
         <p className="text-xl text-gray-700 mb-6">
           Rejuvenating Mind, Body & Soul
@@ -54,6 +55,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+       <HomeReviews />
 
       {/* CONTACT & LOCATION */}
       <section className="bg-[#f5fbf7] py-16 px-6">
@@ -65,7 +67,7 @@ export default function Home() {
               Visit Us
             </h2>
             <p className="text-gray-700 mb-2">
-              Yoga4U Wellness Center
+              YOGA4U Wellness Center
             </p>
             <p className="text-gray-700 mb-2">
               📍 94, Alex Nagar B Colony , Madhavaram , Ch -51

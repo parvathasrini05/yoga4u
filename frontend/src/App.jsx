@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import HealingStories from "./pages/HealingStories";
 
 import Navbar from "./components/Navbar";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -32,6 +33,8 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/healing-stories" element={<HealingStories />} />
+
 
         {/* ---------- USER ROUTES ---------- */}
         <Route element={<ProtectedRoute />}>
