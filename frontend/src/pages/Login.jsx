@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "../api/axios";
+import api from "../api/axios";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
@@ -13,12 +13,12 @@ export default function Login() {
     e.preventDefault();
 
     try {
-      const { data } = await axios.post("/auth/login", {
+      const { data } = await api.post("/auth/login", {
         email,
         password,
       });
 
-      login(data); // store token + user
+      login(data); // ✅ FIXED
       navigate("/");
     } catch (err) {
       alert(err.response?.data?.message || "Login failed");
