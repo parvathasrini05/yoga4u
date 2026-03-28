@@ -75,6 +75,9 @@ export default function AdminEvents() {
           <label className="font-medium text-gray-700">
             Registration Link 
           </label>
+
+          </section>
+          <section>
           <input
             name="googleFormLink"
             placeholder="Paste Google Form link"

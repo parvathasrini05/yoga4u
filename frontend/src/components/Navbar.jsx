@@ -1,92 +1,84 @@
 import { Link, NavLink } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { motion } from "framer-motion";
 import logo from "../assets/logo.png";
 
 export default function Navbar() {
   const { user, logout } = useAuth();
 
   return (
-    <nav className="bg-green-800 text-white px-8 py-4 flex justify-between items-center shadow-md">
-      
-      {/* LOGO + BRAND */}
-      <Link to="/" className="flex items-center gap-3">
-        <img
-          src={logo}
-          alt="YOGA4U Logo"
-          className="h-10 w-auto"
-        />
-        <div className="leading-tight">
-          <h1 className="text-xl font-semibold">
-            YOGA4U WELLNESS CENTER
-          </h1>
-          <p className="text-xs text-green-200">
-            Rejuvenating Mind, Body & Soul
-          </p>
-        </div>
-      </Link>
+    <motion.nav
+      initial={{ y: -80 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.6 }}
+      className="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl border-b border-gray-200"
+    >
+      <div className="flex items-center gap-8 text-sm font-medium text-gray-700">
 
-      {/* NAV LINKS */}
-      <div className="flex items-center gap-6 text-sm font-medium">
-        
-        <NavLink
-          to="/events"
-          className={({ isActive }) =>
-            isActive ? "text-green-300" : "hover:text-green-300"
-          }
-        >
-          Events
-        </NavLink>
+  <NavLink
+    to="/events"
+    className={({ isActive }) =>
+      isActive ? "text-emerald-600 font-semibold" : "hover:text-emerald-600 transition"
+    }
+  >
+    Events
+  </NavLink>
 
-        <NavLink
-          to="/posts"
-          className={({ isActive }) =>
-            isActive ? "text-green-300" : "hover:text-green-300"
-          }
-        >
-          Posts
-        </NavLink>
+  <NavLink
+    to="/posts"
+    className={({ isActive }) =>
+      isActive ? "text-emerald-600 font-semibold" : "hover:text-emerald-600 transition"
+    }
+  >
+    Posts
+  </NavLink>
 
-        {/* ✅ Healing Stories added here */}
-        <NavLink
-          to="/healing-stories"
-          className={({ isActive }) =>
-            isActive ? "text-green-300" : "hover:text-green-300"
-          }
-        >
-          Healing Stories
-        </NavLink>
+  <NavLink
+    to="/healing-stories"
+    className={({ isActive }) =>
+      isActive ? "text-emerald-600 font-semibold" : "hover:text-emerald-600 transition"
+    }
+  >
+    Stories
+  </NavLink>
 
-        {user?.role === "ADMIN" && (
-          <NavLink
-            to="/admin"
-            className="px-3 py-1 rounded bg-green-700 hover:bg-green-600"
-          >
-            Admin
-          </NavLink>
-        )}
+  {/* ✅ NEW WELLNESS LINK */}
+  <NavLink
+    to="/wellness"
+    className={({ isActive }) =>
+      isActive
+        ? "text-emerald-600 font-semibold"
+        : "hover:text-emerald-600 transition"
+    }
+  >
+    Wellness
+  </NavLink>
 
-        {user ? (
-          <button
-            onClick={logout}
-            className="border border-green-300 px-3 py-1 rounded hover:bg-green-700"
-          >
-            Logout
-          </button>
-        ) : (
-          <>
-            <NavLink to="/login" className="hover:text-green-300">
-              Login
-            </NavLink>
+  {user?.role === "ADMIN" && (
+    <NavLink
+      to="/admin"
+      className="px-4 py-2 rounded-full bg-gray-900 text-white hover:bg-black"
+    >
+      Admin
+    </NavLink>
+  )}
 
-            <NavLink
-              to="/register"
-              className="bg-green-600 px-4 py-1 rounded hover:bg-green-500"
-            >
-              Register
-            </NavLink>
-          </>
-        )}
-      </div>
-    </nav>
+  {user ? (
+    <button
+      onClick={logout}
+      className="px-4 py-2 rounded-full border border-gray-300 hover:bg-gray-100"
+    >
+      Logout
+    </button>
+  ) : (
+    <NavLink
+      to="/login"
+      className="bg-emerald-500 text-white px-5 py-2 rounded-full hover:bg-emerald-600 transition"
+    >
+      Get Started
+    </NavLink>
+  )}
+</div>
+    </motion.nav>
   );
 }
