@@ -22,17 +22,24 @@ transporter.verify((error) => {
 
 // 📄 Load HTML Template
 const loadTemplate = (templateName, variables = {}) => {
-  let html = fs.readFileSync(
-    path.join(__dirname, `../templates/${templateName}.html`),
-    "utf-8"
-  );
+  const templatePath = path.join(__dirname, `../templates/${templateName}.html`);
+
+  if (!fs.existsSync(templatePath)) {
+    console.error("❌ Missing email template:", templateName);
+    return "<p>Email template missing</p>";
+  }
+
+  let html = fs.readFileSync(templatePath, "utf-8");
 
   Object.keys(variables).forEach((key) => {
-    html = html.replace(new RegExp(`{{${key}}}`, "g"), variables[key]);
+    const regex = new RegExp(`{{${key}}}`, "g");
+    html = html.replace(regex, variables[key] || "");
   });
 
   return html;
 };
+
+
 
 // 📧 Bulk Email (Optimized for 1000+ users)
 const sendBulkEmail = async (users, subject, templateName, variables) => {

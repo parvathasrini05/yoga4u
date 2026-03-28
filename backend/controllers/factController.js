@@ -1,7 +1,8 @@
 const Fact = require("../models/Fact");
-const { notifyAllUsers } = require("../utils/emailHelpers");
+const User = require("../models/User");
+const { sendBulkEmail } = require("../utils/emailHelpers");
 
-// 🟢 Admin: Add Fact Manually + Email
+// 🟢 Admin: Add Fact Manually
 exports.addFact = async (req, res) => {
   try {
     const today = new Date().toISOString().split("T")[0];
@@ -12,37 +13,40 @@ exports.addFact = async (req, res) => {
     }
 
     const fact = await Fact.create({
-      text: req.body.text,
+      text: req.body.fact,
       source: "ADMIN",
       date: today,
     });
 
-    // 📧 Email notification
-    await notifyAllUsers(
-      "🌿 Yoga4U – Fact of the Day",
+    const users = await User.find({}, "email");
+
+    // 📧 Send Fact Email
+    await sendBulkEmail(
+      users,
+      "🌿 Fact of the Day",
       "factOfTheDay",
-      { fact: fact.text }
+      {
+        fact: fact.text   // ✅ MUST match {{fact}}
+      }
     );
 
     res.status(201).json(fact);
   } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
+  console.error("🔥 FACT ERROR FULL STACK:", error);
+  res.status(500).json({
+    message: error.message,
+    stack: error.stack,
+  });
+}
+
 };
 
-// 👀 User/Admin: Get Today Fact
+// 👀 Get today’s fact
 exports.getTodayFact = async (req, res) => {
-  try {
-    const today = new Date().toISOString().split("T")[0];
+  const today = new Date().toISOString().split("T")[0];
+  const fact = await Fact.findOne({ date: today });
 
-    const fact = await Fact.findOne({ date: today });
+  if (!fact) return res.json({ message: "No fact available today" });
 
-    if (!fact) {
-      return res.json({ message: "No fact available today" });
-    }
-
-    res.json(fact);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
+  res.json(fact);
 };

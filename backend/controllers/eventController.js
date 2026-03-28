@@ -22,7 +22,7 @@ exports.createEvent = async (req, res) => {
       {
         title: event.title,
         description: event.description,
-        date: event.date.toDateString(),
+        date: event.date,      // ✅ FIX
         time: event.time,
         location: event.location,
         googleFormLink: event.googleFormLink,
@@ -31,6 +31,7 @@ exports.createEvent = async (req, res) => {
 
     res.status(201).json(event);
   } catch (error) {
+    console.error("Create Event Error:", error);
     res.status(500).json({ message: error.message });
   }
 };
@@ -71,7 +72,7 @@ exports.updateEvent = async (req, res) => {
       "eventUpdated",
       {
         title: event.title,
-        date: event.date.toDateString(),
+        date: event.date,    // ✅ FIX
         time: event.time,
         location: event.location,
         googleFormLink: event.googleFormLink,
@@ -80,6 +81,7 @@ exports.updateEvent = async (req, res) => {
 
     res.json(event);
   } catch (error) {
+    console.error("Update Event Error:", error);
     res.status(500).json({ message: error.message });
   }
 };

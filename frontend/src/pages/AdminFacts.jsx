@@ -4,10 +4,12 @@ import AdminLayout from "../components/AdminLayout";
 export default function AdminFacts() {
   const submit = async (e) => {
     e.preventDefault();
-
+  
     const formData = new FormData(e.target);
-
-    await api.post("/facts", formData);
+    const fact = formData.get("fact");   // ✅ FIXED
+  
+    await api.post("/facts", { fact });  // send JSON, not FormData
+  
     alert("✅ Fact saved");
     e.target.reset();
   };
@@ -21,13 +23,13 @@ export default function AdminFacts() {
         onSubmit={submit}
         className="bg-white max-w-xl mx-auto rounded-xl shadow p-6 space-y-6"
       >
-        {/* Caption */}
+        {/* Fact Text */}
         <div className="flex flex-col gap-2">
           <label className="font-medium text-gray-700">
-            Caption
+            Fact
           </label>
           <textarea
-            name="text"
+            name="fact"   // ✅ FIXED
             rows={4}
             placeholder="Example: Practicing yoga daily improves flexibility and mental focus."
             required
@@ -35,26 +37,6 @@ export default function AdminFacts() {
                        resize-none
                        focus:outline-none focus:ring-2 focus:ring-green-600"
           />
-        </div>
-
-        {/* Image Upload */}
-        <div className="flex flex-col gap-2">
-          <label className="font-medium text-gray-700">
-            Related Image (optional)
-          </label>
-          <input
-            type="file"
-            name="image"
-            accept="image/*"
-            className="block w-full text-sm text-gray-600
-                       file:mr-4 file:py-2 file:px-4
-                       file:rounded-lg file:border-0
-                       file:bg-green-100 file:text-green-700
-                       hover:file:bg-green-200"
-          />
-          <p className="text-xs text-gray-500">
-            Upload an image related to this wellness fact
-          </p>
         </div>
 
         {/* Submit */}

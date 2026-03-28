@@ -8,11 +8,17 @@ export const AuthProvider = ({ children }) => {
   );
 
   const login = (data) => {
+    // ✅ STORE TOKEN
+    localStorage.setItem("token", data.token);
+
+    // ✅ STORE USER
     localStorage.setItem("user", JSON.stringify(data));
+
     setUser(data);
   };
 
   const logout = () => {
+    localStorage.removeItem("token");
     localStorage.removeItem("user");
     setUser(null);
   };

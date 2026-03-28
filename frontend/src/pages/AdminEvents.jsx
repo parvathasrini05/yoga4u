@@ -50,6 +50,25 @@ export default function AdminEvents() {
     />
   </div>
 </section>
+{/* Age Group */}
+<div className="flex flex-col gap-2">
+  <label className="font-medium text-gray-700">
+    Age Group
+  </label>
+  <select
+    name="ageGroup"
+    required
+    className="w-full rounded-lg border border-gray-300 px-4 py-3
+               focus:outline-none focus:ring-2 focus:ring-green-600"
+  >
+    <option value="">Select age group</option>
+    <option value="Kids">Kids</option>
+    <option value="Teens">Teens</option>
+    <option value="18-40">18–40</option>
+    <option value="40+">40+</option>
+    <option value="All">All Ages</option>
+  </select>
+</div>
 
         {/* Schedule */}
         <section className="bg-gray-50 p-4 rounded-lg space-y-3">
@@ -69,6 +88,7 @@ export default function AdminEvents() {
             className="input"
           />
         </section>
+        
 
         {/* Registration */}
         <section className="space-y-3">
