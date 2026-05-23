@@ -97,7 +97,6 @@ A full-stack **Yoga & Wellness Management Web Application** designed for Yoga4U 
 
 ## 🏥 About Module
 
-* Founder profile: **Dr. S. R. Kalaimathi**
 * Yoga4U Wellness Centre overview
 * Mission-driven wellness philosophy
 * Holistic healing approach combining:
