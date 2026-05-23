@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   ArrowRight,
   Play,
@@ -327,16 +328,16 @@ const navigate = useNavigate();
           >
 
             <img
-              src={founder}
-              alt="Founder"
-              className="
-              rounded-[32px]
-              shadow-2xl
-              object-cover
-              w-full
-              max-h-[520px]
-            "
-            />
+  src="https://images.unsplash.com/photo-1516827003699-2880f453d93b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fFlPR0ElMjBUUkFJTkVSfGVufDB8fDB8fHww"
+  alt="Founder"
+  className="
+    rounded-[32px]
+    shadow-2xl
+    object-cover
+    w-full
+    max-h-[520px]
+  "
+/>
           </motion.div>
 
           {/* Content */}
@@ -415,36 +416,42 @@ const navigate = useNavigate();
           </div>
 
           {/* Site Links */}
-          <div>
+          
+<div>
+  <h3 className="text-xl font-semibold mb-5">
+    Site Links
+  </h3>
 
-            <h3 className="text-xl font-semibold mb-5">
-              Site Links
-            </h3>
+  <div className="space-y-3 text-[#CFCFCF]">
 
-            <div className="space-y-3 text-[#CFCFCF]">
+    <Link to="/" className="hover:text-white transition block">
+      Home
+    </Link>
 
-              <p className="hover:text-white transition cursor-pointer">
-                Home
-              </p>
+    <Link to="/events" className="hover:text-white transition block">
+      Events
+    </Link>
 
-              <p className="hover:text-white transition cursor-pointer">
-                About
-              </p>
+    <Link to="/posts" className="hover:text-white transition block">
+      Community Posts
+    </Link>
 
-              <p className="hover:text-white transition cursor-pointer">
-                Programs
-              </p>
+    <Link to="/about" className="hover:text-white transition block">
+      About Us
+    </Link>
 
-              <p className="hover:text-white transition cursor-pointer">
-                Reviews
-              </p>
+    <Link to="/wellness" className="hover:text-white transition block">
+      Wellness Spin
+    </Link>
 
-              <p className="hover:text-white transition cursor-pointer">
-                Contact
-              </p>
-            </div>
-          </div>
+    <Link to="/healing-stories" className="hover:text-white transition block">
+      Healing Stories
+    </Link>
 
+    
+
+  </div>
+</div>
           {/* Programs */}
           <div>
 
