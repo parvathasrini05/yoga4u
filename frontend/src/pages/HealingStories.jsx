@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
 import reviews from "../data/reviews";
 import ReviewCard from "../components/ReviewCard";
-
+import { useNavigate } from "react-router-dom";
 export default function HealingStories() {
+  const navigate = useNavigate();
   return (
     <div className="min-h-screen bg-[#FFF7F2] overflow-hidden">
 
@@ -250,20 +251,21 @@ export default function HealingStories() {
             </p>
 
             <button
-              className="
-                mt-8
-                bg-white
-                text-[#6C63FF]
-                px-8 py-4
-                rounded-full
-                font-semibold
-                shadow-xl
-                hover:scale-105
-                transition-all duration-300
-              "
-            >
-              Start Your Journey
-            </button>
+  onClick={() => navigate("/events")}
+  className="
+    mt-8
+    bg-white
+    text-[#6C63FF]
+    px-8 py-4
+    rounded-full
+    font-semibold
+    shadow-xl
+    hover:scale-105
+    transition-all duration-300
+  "
+>
+  Start Your Journey
+</button>
           </div>
         </div>
       </section>

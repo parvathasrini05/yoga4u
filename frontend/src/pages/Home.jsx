@@ -13,14 +13,19 @@ import founder from "../assets/founder.jpg";
 import HomeReviews from "../components/HomeReviews";
 
 export default function Home() {
-const navigate = useNavigate();
+  const navigate = useNavigate();
   const programs = [
     {
       title: "Therapeutic Yoga",
       image:
-"https://images.unsplash.com/photo-1532798442725-41036acc7489?w=600&auto=format&fit=crop&q=60",
-      description:
-        "Personalized therapeutic yoga sessions focused on posture correction, flexibility, back pain relief, breathing improvement, and emotional wellness.",
+        "https://images.unsplash.com/photo-1532798442725-41036acc7489?w=600&auto=format&fit=crop&q=60",
+       highlights: [
+      "Posture correction & alignment",
+      "Back pain & joint pain relief",
+      "Flexibility & mobility improvement",
+      "Breathing & stress control",
+      "Emotional wellness support",
+    ],
       timings: "Morning & Evening Batches",
       fees: "Approx ₹3,000 – ₹5,000 / month",
     },
@@ -29,8 +34,14 @@ const navigate = useNavigate();
       title: "Women’s Wellness Care",
       image:
         "https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=1200&auto=format&fit=crop",
-      description:
-        "Prenatal yoga, hormonal wellness, postnatal recovery, restorative healing, stress relief, and guided breathing practices for holistic women’s health.",
+      highlights: [
+  "Prenatal yoga support",
+  "Hormonal balance & wellness",
+  "Postnatal recovery guidance",
+  "Restorative healing practices",
+  "Stress relief & relaxation",
+  "Guided breathing techniques",
+],
       timings: "Customized Guided Sessions",
       fees: "Approx ₹3,500 – ₹6,000 / month",
     },
@@ -39,8 +50,14 @@ const navigate = useNavigate();
       title: "Kids Yoga & Meditation",
       image:
         "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1200&auto=format&fit=crop",
-      description:
-        "Yoga and mindfulness programs that improve focus, flexibility, confidence, discipline, mental calmness, and healthy daily routines for children.",
+      highlights: [
+  "Improves focus & concentration",
+  "Builds flexibility & strength",
+  "Boosts confidence & discipline",
+  "Enhances mental calmness",
+  "Develops mindfulness habits",
+  "Encourages healthy daily routines",
+],
       timings: "Morning, Evening & Online",
       fees: "Approx ₹1,000 – ₹3,000 / month",
     },
@@ -95,6 +112,7 @@ const navigate = useNavigate();
               holistic healing programs tailored
               for all age groups.
             </p>
+            
 
             {/* Buttons */}
             <div className="mt-10 flex flex-wrap gap-4">
@@ -108,8 +126,8 @@ const navigate = useNavigate();
                 transition-all duration-300 shadow-2xl
               "
               >
-                Explore Programs
-                <ArrowRight size={18} />
+                Wellness is not a luxury, It’s a lifestyle
+                
               </button>
 
               
@@ -193,7 +211,7 @@ const navigate = useNavigate();
                   transition-all duration-300 font-medium
                 "
                 >
-                  Join a Session
+                  A healthier you is just one habit away
                 </button>
               </div>
             </div>
@@ -271,9 +289,14 @@ const navigate = useNavigate();
                     {item.title}
                   </h3>
 
-                  <p className="text-gray-600 mt-4 leading-relaxed text-[15px]">
-                    {item.description}
-                  </p>
+                  <ul className="mt-4 space-y-2 text-gray-600 text-[15px]">
+  {item.highlights.map((point, i) => (
+    <li key={i} className="flex items-start gap-2">
+      <span className="text-[#6C63FF] mt-1">•</span>
+      <span>{point}</span>
+    </li>
+  ))}
+</ul>
 
                   <div className="mt-5 space-y-2">
 
@@ -292,21 +315,7 @@ const navigate = useNavigate();
                     </p>
                   </div>
 
-                  <button
-                    className="
-                    mt-6
-                    bg-[#2F2F2F]
-                    hover:bg-black
-                    text-white
-                    py-3 rounded-full
-                    flex items-center justify-center gap-2
-                    transition-all duration-300
-                    text-sm font-medium
-                  "
-                  >
-                    Read More
-                    <ArrowRight size={16} />
-                  </button>
+                  
                 </div>
               </motion.div>
             ))}
@@ -328,16 +337,16 @@ const navigate = useNavigate();
           >
 
             <img
-  src="https://images.unsplash.com/photo-1516827003699-2880f453d93b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fFlPR0ElMjBUUkFJTkVSfGVufDB8fDB8fHww"
-  alt="Founder"
-  className="
-    rounded-[32px]
-    shadow-2xl
-    object-cover
-    w-full
-    max-h-[520px]
-  "
-/>
+              src="https://images.unsplash.com/photo-1516827003699-2880f453d93b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fFlPR0ElMjBUUkFJTkVSfGVufDB8fDB8fHww"
+              alt="Founder"
+              className="
+                rounded-[32px]
+                shadow-2xl
+                object-cover
+                w-full
+                max-h-[520px]
+              "
+            />
           </motion.div>
 
           {/* Content */}
@@ -370,7 +379,7 @@ const navigate = useNavigate();
             </p>
 
             <button
-            onClick={() => navigate("/about")}
+              onClick={() => navigate("/about")}
               className="
               mt-8
               bg-[#2F2F2F]
@@ -390,114 +399,7 @@ const navigate = useNavigate();
       {/* REVIEWS */}
       <HomeReviews />
 
-      {/* FOOTER */}
-      <footer className="bg-[#1E1B2E] text-white pt-20 pb-10 px-6">
-
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-12">
-
-          {/* Brand */}
-          <div>
-
-            <h2 className="text-3xl font-bold">
-              Yoga4U
-            </h2>
-
-            <p className="text-[#CFCFCF] mt-4 leading-relaxed">
-              Therapeutic yoga and holistic wellness
-              programs guided by
-              Dr. S. R. Kalaimathi.
-            </p>
-
-            <div className="mt-6 space-y-2 text-[#CFCFCF] text-sm">
-              <p>Madhavaram Milk Colony, Chennai</p>
-              <p>+91 XXXXX XXXXX</p>
-              <p>Mon – Thu • 6 AM – 7 PM</p>
-            </div>
-          </div>
-
-          {/* Site Links */}
-          
-<div>
-  <h3 className="text-xl font-semibold mb-5">
-    Site Links
-  </h3>
-
-  <div className="space-y-3 text-[#CFCFCF]">
-
-    <Link to="/" className="hover:text-white transition block">
-      Home
-    </Link>
-
-    <Link to="/events" className="hover:text-white transition block">
-      Events
-    </Link>
-
-    <Link to="/posts" className="hover:text-white transition block">
-      Community Posts
-    </Link>
-
-    <Link to="/about" className="hover:text-white transition block">
-      About Us
-    </Link>
-
-    <Link to="/wellness" className="hover:text-white transition block">
-      Wellness Spin
-    </Link>
-
-    <Link to="/healing-stories" className="hover:text-white transition block">
-      Healing Stories
-    </Link>
-
-    
-
-  </div>
-</div>
-          {/* Programs */}
-          <div>
-
-            <h3 className="text-xl font-semibold mb-5">
-              Programs
-            </h3>
-
-            <div className="space-y-3 text-[#CFCFCF] text-sm">
-
-              <p>Therapeutic Yoga</p>
-              <p>Women’s Wellness</p>
-              <p>Kids Yoga</p>
-              <p>Meditation</p>
-              <p>Online Sessions</p>
-            </div>
-          </div>
-
-          {/* Contact */}
-          <div>
-
-            <h3 className="text-xl font-semibold mb-5">
-              Contact
-            </h3>
-
-            <div className="space-y-3 text-[#CFCFCF] text-sm">
-
-              <p>Email : yoga4u@gmail.com</p>
-              <p>Phone : +91 XXXXX XXXXX</p>
-              <p>Chennai, Tamil Nadu</p>
-              <p>Mon – Thu Active Sessions</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom */}
-        <div
-          className="
-          border-t border-white/10
-          mt-14 pt-6
-          text-center text-[#A5A5A5] text-sm
-        "
-        >
-          © 2026 Yoga4U Wellness Centre •
-          Designed for holistic wellness and mindful living.
-        </div>
-      </footer>
+      
     </div>
   );
 }

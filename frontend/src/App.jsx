@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import HealingStories from "./pages/HealingStories";
 
 import Navbar from "./components/Navbar";
-
+import Footer from "./components/Footer";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AdminRoute from "./components/AdminRoute";
 
@@ -52,6 +52,8 @@ export default function App() {
           <Route path="/admin/facts" element={<AdminFacts />} />
         </Route>
       </Routes>
+      {/* ✅ STATIC FOOTER */}
+      <Footer />
     </>
   );
 }

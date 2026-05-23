@@ -42,7 +42,7 @@ const reviews = [
     rating: 5,
     source: "Google",
     text:
-      "I feel truly blessed to be a part of this Yoga4U classes. The environment here is peaceful, positive, and filled with good energy, making every session a wonderful experience. My yoga Guru is extremely knowledgeable kind and dedicated. Her guidance has not only improved my flexibility and strength but has also brought me inner calmness and balance. I am deeply greatful to my guru for helping me in this beautiful journey of healtOne of the best yoga classes happening in Chennai. Blessed to have an amazing guru(kalai mam) who encourages, motivates and ensures that we have an amazing class. Mam also teaches for student’s need with additional information relatively.. thank you for your wonderful service h, mindfulness and self discovery.both physical and mental wellness. The atmosphere is filled with positive vibes. I gained more self-confidence through yoga."
+      "I feel truly blessed to be a part of this Yoga4U classes. The environment here is peaceful, positive, and filled with good energy, making every session a wonderful experience. My yoga Guru is extremely knowledgeable kind and dedicated. Her guidance has not only improved my flexibility and strength but has also brought me inner calmness and balance. I am deeply greatful to my guru for helping me in this beautiful journey of healtOne of the best yoga classes happening in Chennai. Blessed to have an amazing guru(kalai mam) who encourages, motivates and ensures that we have an amazing class. Mam also teaches for student’s need with additional information relatively.. thank you for your wonderful service, mindfulness and self discovery."
   },
   
 ];
