@@ -31,8 +31,8 @@ export default function Footer() {
           <div className="space-y-3 text-[#CFCFCF]">
             <Link to="/events" className="hover:text-white block">Programs</Link>
             <Link to="/posts" className="hover:text-white block">Community Posts</Link>
-               <Link to="/healing-stories" className="hover:text-white block">Healing Stories</Link>
-            <Link to="/wellness" className="hover:text-white block">Wellness Spin</Link>
+            <Link to="/healing-stories" className="hover:text-white block">Healing Stories</Link>
+            <Link to="/oracle" className="hover:text-white block">Try Wellness Oracle</Link>
             <Link to="/about" className="hover:text-white block">About Us</Link>
          
           </div>

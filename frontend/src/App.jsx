@@ -7,7 +7,8 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import AdminRoute from "./components/AdminRoute";
 
 /* Public Pages */
-import Wellness from "./pages/Wellness";
+//import Wellness from "./pages/Wellness";
+import WellnessOracle from "./pages/WellnessOracle";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -36,7 +37,7 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/healing-stories" element={<HealingStories />} />
-        <Route path="/wellness" element={<Wellness />} />
+        <Route path="/oracle" element={<WellnessOracle />} />
 
 
         {/* ---------- USER ROUTES ---------- */}

@@ -14,7 +14,7 @@ export default function Navbar() {
     { to: "/events", label: "Programs" },
     { to: "/posts", label: "Community" },
     { to: "/healing-stories", label: "Stories" },
-    { to: "/wellness", label: "Wellness" },
+    { to: "/oracle", label: "Wellness" },
     { to: "/about", label: "About" },
   ];
 
