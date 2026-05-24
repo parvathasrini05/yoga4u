@@ -11,6 +11,7 @@ const { protect } = require("../middleware/authMiddleware");
 const { isAdmin } = require("../middleware/adminMiddleware");
 const { uploadPostImage } = require("../middleware/uploadMiddleware");
 
+
 const router = express.Router();
 
 // PUBLIC
