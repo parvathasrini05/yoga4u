@@ -32,7 +32,7 @@ export default function About() {
 
       <div className="max-w-6xl mx-auto px-6 py-20 relative z-10">
 
-        {/* HERO SECTION */}
+        {/* HERO */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 bg-white shadow px-5 py-2 rounded-full text-sm text-purple-600 font-medium">
             <Sparkles size={16} />
@@ -49,52 +49,8 @@ export default function About() {
           </p>
         </div>
 
-        {/* FOUNDER SECTION */}
-        <div className="grid md:grid-cols-2 gap-10 items-center bg-white rounded-3xl shadow-xl p-8 md:p-12">
-
-          {/* Image */}
-          <div className="flex justify-center">
-            <div className="relative">
-              <img
-  src="https://images.unsplash.com/photo-1516827003699-2880f453d93b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fFlPR0ElMjBUUkFJTkVSfGVufDB8fDB8fHww"
-  alt="Founder"
-  className="w-80 h-80 object-cover rounded-3xl shadow-lg"
-/>
-              {/* floating badge */}
-              <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 bg-purple-600 text-white px-4 py-2 rounded-full text-sm shadow-md">
-                Founder • Yoga Therapist
-              </div>
-            </div>
-          </div>
-
-          {/* Content */}
-          <div>
-            <h2 className="text-3xl font-bold text-[#2F2F2F]">
-              Dr. S.R. Kalaimathi
-            </h2>
-
-            <p className="text-purple-600 font-medium mt-1">
-              Wellness Expert | Yoga Therapist | Herbal Science Specialist
-            </p>
-
-            <p className="mt-5 text-gray-700 leading-relaxed">
-              With over four decades of experience in yoga and holistic healing,
-              Dr. Kalaimathi has dedicated her life to promoting physical health,
-              emotional balance, and spiritual well-being. Her journey began at
-              an early age under traditional guidance and evolved into a lifelong
-              mission of teaching and healing.
-            </p>
-
-            <p className="mt-4 text-gray-700 leading-relaxed">
-              She has served in the education sector for 31 years before fully
-              transitioning into wellness therapy, where she now guides individuals
-              toward healthier lifestyles through yoga, meditation, and herbal science.
-            </p>
-          </div>
-        </div>
-
-        {/* WELLNESS CENTER */}
-        <div className="mt-16 bg-gradient-to-r from-purple-50 to-pink-50 rounded-3xl p-10 shadow-md">
+        {/* WELLNESS CENTER (NOW FIRST MAIN SECTION) */}
+        <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-3xl p-10 shadow-md">
           <h2 className="text-3xl font-bold text-center text-[#2F2F2F]">
             About YOGA4U Wellness Center
           </h2>
@@ -123,7 +79,48 @@ export default function About() {
           </div>
         </div>
 
-        {/* FAQ SECTION */}
+        {/* AUTHOR / FOUNDER (NOW SECOND) */}
+        <div className="mt-16 grid md:grid-cols-2 gap-10 items-center bg-white rounded-3xl shadow-xl p-8 md:p-12">
+
+          {/* Image */}
+          <div className="flex justify-center">
+            <div className="relative">
+              <img
+                src="https://images.unsplash.com/photo-1516827003699-2880f453d93b?w=600&auto=format&fit=crop&q=60"
+                alt="Founder"
+                className="w-80 h-80 object-cover rounded-3xl shadow-lg"
+              />
+
+              <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 bg-purple-600 text-white px-4 py-2 rounded-full text-sm shadow-md">
+                Founder • Yoga Therapist
+              </div>
+            </div>
+          </div>
+
+          {/* Content */}
+          <div>
+            <h2 className="text-3xl font-bold text-[#2F2F2F]">
+              Dr. S.R. Kalaimathi
+            </h2>
+
+            <p className="text-purple-600 font-medium mt-1">
+              Wellness Expert | Yoga Therapist | Herbal Science Specialist
+            </p>
+
+            <p className="mt-5 text-gray-700 leading-relaxed">
+              With over four decades of experience in yoga and holistic healing,
+              Dr. Kalaimathi has dedicated her life to promoting physical health,
+              emotional balance, and spiritual well-being.
+            </p>
+
+            <p className="mt-4 text-gray-700 leading-relaxed">
+              She served in education for 31 years before fully transitioning into
+              wellness therapy, guiding individuals through yoga, meditation, and herbal science.
+            </p>
+          </div>
+        </div>
+
+        {/* FAQ (NOW LAST) */}
         <div className="mt-16">
           <h2 className="text-3xl font-bold text-center text-[#2F2F2F]">
             Frequently Asked Questions

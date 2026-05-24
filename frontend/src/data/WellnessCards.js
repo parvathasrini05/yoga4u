@@ -12,7 +12,7 @@ const wellnessCards = [
     id: 2,
     title: "TADASANA",
     subtitle: "The Mountain Pose",
-    image: "https://rishikeshyogavalley.com/wp-content/uploads/2025/11/Tadasana-or-Mountain-Pose.webp",
+    image: "https://th.bing.com/th/id/OIP.W2DqkeAvDhf1yN2D-XwS2QHaE8?w=248&h=180&c=7&r=0&o=7&dpr=1.1&pid=1.7&rm=3",
     technique: "Stand erect, interlock fingers, and stretch arms upward while balancing on toes.",
     benefits: "Develops physical balance, improves posture, and stretches the entire spine.",
     precaution: "Avoid if suffering from severe headaches, insomnia, or low blood pressure."
@@ -57,7 +57,7 @@ const wellnessCards = [
     id: 7,
     title: "DHANURASANA",
     subtitle: "The Bow Pose",
-    image: "https://www.theyogacollective.com/wp-content/uploads/2019/10/5850642685417750730_IMG_8904-1-e1571160047174.jpg",
+    image: "https://th.bing.com/th/id/OIP._me2rPvazaZh2Bbrd-WwWgHaEK?w=292&h=180&c=7&r=0&o=7&dpr=1.1&pid=1.7&rm=3",
     technique: "Lie on stomach, grasp ankles, and pull upward to arch the body like a bow.",
     benefits: "Tones the back, restores spinal flexibility, and improves liver function.",
     precaution: "Avoid with hernia, high blood pressure, or recent surgeries."
