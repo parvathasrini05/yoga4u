@@ -11,17 +11,26 @@ import {
 } from "lucide-react";
 
 export default function AdminEvents() {
-
   const submit = async (e) => {
     e.preventDefault();
 
-    const formData = new FormData(e.target);
+    try {
+      const formData = new FormData(e.target);
 
-    await api.post("/events", formData);
+      // Added headers for file upload handling
+      await api.post("/events", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
 
-    alert("✅ Event published successfully");
-
-    e.target.reset();
+      alert("✅ Event published successfully");
+      e.target.reset();
+    } catch (error) {
+      console.error("Error creating event:", error);
+      alert(
+        error.response?.data?.message ||
+          "❌ Failed to publish event. Please try again."
+      );
+    }
   };
 
   return (
@@ -29,7 +38,6 @@ export default function AdminEvents() {
       title="Create New Event"
       subtitle="Publish premium wellness programs and yoga sessions for your community"
     >
-
       <motion.form
         initial={{ opacity: 0, y: 25 }}
         animate={{ opacity: 1, y: 0 }}
@@ -45,7 +53,6 @@ export default function AdminEvents() {
         overflow-hidden
       "
       >
-
         {/* TOP HEADER */}
         <div
           className="
@@ -56,10 +63,7 @@ export default function AdminEvents() {
           text-white
         "
         >
-
-          <h2 className="text-3xl font-bold">
-            Wellness Event Details
-          </h2>
+          <h2 className="text-3xl font-bold">Wellness Event Details</h2>
 
           <p className="mt-2 text-white/90">
             Fill all the required information carefully before publishing.
@@ -67,10 +71,8 @@ export default function AdminEvents() {
         </div>
 
         <div className="p-8 space-y-10">
-
           {/* EVENT INFO */}
           <section className="space-y-6">
-
             <div className="flex items-center gap-3 mb-2">
               <CalendarDays className="text-[#6C63FF]" size={22} />
 
@@ -81,7 +83,6 @@ export default function AdminEvents() {
 
             {/* TITLE */}
             <div className="space-y-2">
-
               <label className="text-sm font-semibold text-[#444]">
                 Event Title
               </label>
@@ -108,7 +109,6 @@ export default function AdminEvents() {
 
             {/* DESCRIPTION */}
             <div className="space-y-2">
-
               <label className="text-sm font-semibold text-[#444]">
                 Event Description
               </label>
@@ -116,6 +116,7 @@ export default function AdminEvents() {
               <textarea
                 name="description"
                 rows={5}
+                required
                 placeholder="Briefly explain what this wellness session is about..."
                 className="
                 w-full
@@ -136,7 +137,6 @@ export default function AdminEvents() {
 
             {/* AGE GROUP */}
             <div className="space-y-2">
-
               <label className="flex items-center gap-2 text-sm font-semibold text-[#444]">
                 <Users size={16} />
                 Age Group
@@ -178,7 +178,6 @@ export default function AdminEvents() {
             space-y-5
           "
           >
-
             <div className="flex items-center gap-3">
               <Clock3 className="text-[#6C63FF]" size={22} />
 
@@ -188,10 +187,8 @@ export default function AdminEvents() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-5">
-
               {/* DATE */}
               <div className="space-y-2">
-
                 <label className="text-sm font-semibold text-[#444]">
                   Event Date
                 </label>
@@ -215,13 +212,13 @@ export default function AdminEvents() {
 
               {/* TIME */}
               <div className="space-y-2">
-
                 <label className="text-sm font-semibold text-[#444]">
                   Event Time
                 </label>
 
                 <input
                   name="time"
+                  required
                   placeholder="6:00 AM – 7:00 AM"
                   className="
                   w-full
@@ -239,7 +236,6 @@ export default function AdminEvents() {
 
               {/* LOCATION */}
               <div className="space-y-2">
-
                 <label className="flex items-center gap-2 text-sm font-semibold text-[#444]">
                   <MapPin size={16} />
                   Location
@@ -247,6 +243,7 @@ export default function AdminEvents() {
 
                 <input
                   name="location"
+                  required
                   placeholder="Yoga4U Center, Chennai"
                   className="
                   w-full
@@ -266,23 +263,20 @@ export default function AdminEvents() {
 
           {/* REGISTRATION */}
           <section className="space-y-5">
-
             <div className="flex items-center gap-3">
               <Link2 className="text-[#FFB088]" size={22} />
 
-              <h3 className="text-xl font-bold text-[#2F2F2F]">
-                Registration
-              </h3>
+              <h3 className="text-xl font-bold text-[#2F2F2F]">Registration</h3>
             </div>
 
             <div className="space-y-2">
-
               <label className="text-sm font-semibold text-[#444]">
                 Google Form Link
               </label>
 
               <input
                 name="googleFormLink"
+                required
                 placeholder="Paste registration form link here"
                 className="
                 w-full
@@ -309,23 +303,21 @@ export default function AdminEvents() {
             bg-[#FCFBFF]
           "
           >
-
             <div className="flex items-center gap-3 mb-4">
               <ImagePlus className="text-[#6C63FF]" size={24} />
 
-              <h3 className="text-xl font-bold text-[#2F2F2F]">
-                Event Poster
-              </h3>
+              <h3 className="text-xl font-bold text-[#2F2F2F]">Event Poster</h3>
             </div>
 
             <p className="text-[#666] mb-6 leading-relaxed">
-              Upload a high-quality poster or wellness image
-              to make your event more attractive.
+              Upload a high-quality poster or wellness image to make your event
+              more attractive.
             </p>
 
             <input
               name="pamphletImage"
               type="file"
+              required
               className="
               block w-full text-sm text-[#555]
               file:mr-4
@@ -346,6 +338,7 @@ export default function AdminEvents() {
 
           {/* SUBMIT BUTTON */}
           <button
+            type="submit"
             className="
             w-full
             bg-gradient-to-r
@@ -363,7 +356,6 @@ export default function AdminEvents() {
           >
             Publish Event
           </button>
-
         </div>
       </motion.form>
     </AdminLayout>

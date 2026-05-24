@@ -5,13 +5,21 @@ export default function AdminFacts() {
   const submit = async (e) => {
     e.preventDefault();
 
-    const formData = new FormData(e.target);
-    const fact = formData.get("fact");
+    try {
+      const formData = new FormData(e.target);
+      const fact = formData.get("fact");
 
-    await api.post("/facts", { fact });
+      await api.post("/facts", { fact });
 
-    alert("✅ Wellness fact published successfully");
-    e.target.reset();
+      alert("✅ Wellness fact published successfully");
+      e.target.reset();
+    } catch (error) {
+      console.error("Error publishing fact:", error);
+      alert(
+        error.response?.data?.message ||
+          "❌ Failed to publish fact. Please try again."
+      );
+    }
   };
 
   return (
@@ -56,8 +64,8 @@ export default function AdminFacts() {
           </h2>
 
           <p className="text-[#666] mt-2 leading-relaxed">
-            Inspire users daily with yoga, mindfulness,
-            meditation, and healthy lifestyle tips.
+            Inspire users daily with yoga, mindfulness, meditation, and healthy
+            lifestyle tips.
           </p>
         </div>
 
@@ -102,9 +110,8 @@ export default function AdminFacts() {
           "
         >
           <p className="text-sm text-[#555] leading-7">
-            💡 Wellness facts are displayed to users
-            inside the app to encourage healthy habits,
-            mindfulness, positivity, and emotional balance.
+            💡 Wellness facts are displayed to users inside the app to encourage
+            healthy habits, mindfulness, positivity, and emotional balance.
           </p>
         </div>
 

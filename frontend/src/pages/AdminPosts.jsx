@@ -5,13 +5,23 @@ export default function AdminPosts() {
   const submit = async (e) => {
     e.preventDefault();
 
-    const data = new FormData(e.target);
+    try {
+      const data = new FormData(e.target);
 
-    await api.post("/posts", data);
+      // Added headers for file upload handling
+      await api.post("/posts", data, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
 
-    alert("✅ Post published successfully");
-
-    e.target.reset();
+      alert("✅ Post published successfully");
+      e.target.reset();
+    } catch (error) {
+      console.error("Error creating post:", error);
+      alert(
+        error.response?.data?.message ||
+          "❌ Failed to publish post. Please try again."
+      );
+    }
   };
 
   return (
@@ -56,8 +66,8 @@ export default function AdminPosts() {
           </h2>
 
           <p className="text-[#666] mt-2 leading-relaxed">
-            Share yoga achievements, wellness milestones,
-            event highlights, and inspiring community moments.
+            Share yoga achievements, wellness milestones, event highlights, and
+            inspiring community moments.
           </p>
         </div>
 
@@ -130,8 +140,8 @@ export default function AdminPosts() {
             />
 
             <p className="text-xs text-[#888] mt-4 leading-6">
-              Upload a high-quality image, poster,
-              or memorable wellness moment to engage users.
+              Upload a high-quality image, poster, or memorable wellness moment
+              to engage users.
             </p>
           </div>
         </div>
@@ -148,8 +158,8 @@ export default function AdminPosts() {
           "
         >
           <p className="text-sm text-[#555] leading-7">
-            ✨ Community posts help users stay motivated,
-            inspired, and connected with your wellness journey.
+            ✨ Community posts help users stay motivated, inspired, and
+            connected with your wellness journey.
           </p>
         </div>
 

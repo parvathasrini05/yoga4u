@@ -1,6 +1,7 @@
 const cron = require("node-cron");
 const Fact = require("../models/Fact");
 const facts = require("../data/facts");
+const User = require("../models/User");
 const { notifyAllUsers } = require("../utils/emailHelpers");
 
 // 🕙 Runs at 10:00 AM daily
@@ -19,6 +20,8 @@ cron.schedule("0 10 * * *", async () => {
       source: "SYSTEM",
       date: today,
     });
+    const users=await User.find({},"email");
+
 
     // 📧 Email notification
     await notifyAllUsers(

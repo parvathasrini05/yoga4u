@@ -1,30 +1,50 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import eventsData from "../data/eventsData";
+import api from "../api/axios"; // ✅ Pointed to your custom Axios instance
 import EventCard from "../components/EventCard";
 
 export default function Events() {
   const [filter, setFilter] = useState("All");
+  const [events, setEvents] = useState([]); // ✅ Replaces static eventsData
+  const [loading, setLoading] = useState(true);
 
   const categories = ["All", "Beginner", "Fitness", "Therapy"];
 
+  // ✅ Fetch events from the backend when the page loads
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const response = await api.get("/events");
+        setEvents(response.data);
+      } catch (err) {
+        console.error("Failed to fetch events:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchEvents();
+  }, []);
+
+  // ✅ Filter based on the fetched data
   const filteredEvents =
     filter === "All"
-      ? eventsData
-      : eventsData.filter((e) => e.category === filter);
+      ? events
+      : events.filter((e) => e.category === filter);
+
+  if (loading) {
+    return <div className="min-h-screen flex justify-center items-center text-[#6C63FF] font-bold">Loading Programs...</div>;
+  }
 
   return (
     <div className="min-h-screen bg-[#FFF7F2] overflow-hidden">
-
       {/* HERO SECTION */}
       <section className="relative pt-32 pb-20 px-6">
-
         {/* BACKGROUND BLOBS */}
         <div className="absolute top-0 left-0 w-80 h-80 bg-[#B8B5FF]/20 blur-3xl rounded-full" />
         <div className="absolute top-20 right-0 w-80 h-80 bg-[#FFB088]/20 blur-3xl rounded-full" />
 
         <div className="relative z-10 max-w-6xl mx-auto text-center">
-
           <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/80 backdrop-blur-xl border border-white shadow-md text-[#6C63FF] font-medium mb-6">
             ✨ Wellness Programs
           </div>
@@ -84,19 +104,17 @@ export default function Events() {
         className="relative z-10 max-w-7xl mx-auto px-6 pb-20 grid md:grid-cols-2 xl:grid-cols-3 gap-8"
       >
         {filteredEvents.map((event) => (
-          <EventCard key={event.id} event={event} />
+          // ✅ Changed event.id to event._id to match MongoDB
+          <EventCard key={event._id} event={event} /> 
         ))}
       </motion.section>
 
       {/* WHO CAN JOIN SECTION (FIXED POSITION) */}
       <section className="relative z-10 px-6 py-20">
-
         <div className="max-w-7xl mx-auto text-center">
-
           <h2 className="text-4xl md:text-5xl font-bold text-[#2F2F2F]">
             Who Can Join <span className="text-[#6C63FF]">Yoga4U Wellness?</span>
           </h2>
-
           <p className="mt-5 text-[#666] max-w-3xl mx-auto leading-relaxed">
             Our programs are thoughtfully designed for every age group, lifestyle,
             and wellness goal. Whether you are a beginner or seeking deep healing,
@@ -105,7 +123,6 @@ export default function Events() {
 
           {/* CARDS */}
           <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
-
             {/* Beginners */}
             <div className="bg-white rounded-[28px] p-7 shadow-lg border border-[#F1F1F1]">
               <h3 className="text-xl font-bold text-[#2F2F2F] mb-4">Absolute Beginners</h3>
@@ -116,7 +133,6 @@ export default function Events() {
                 <li>• Safe & comfortable practice sessions</li>
               </ul>
             </div>
-
             {/* Seniors */}
             <div className="bg-white rounded-[28px] p-7 shadow-lg border border-[#F1F1F1]">
               <h3 className="text-xl font-bold text-[#2F2F2F] mb-4">Seniors & Elderly Care</h3>
@@ -127,7 +143,6 @@ export default function Events() {
                 <li>• Breath-based relaxation techniques</li>
               </ul>
             </div>
-
             {/* Women */}
             <div className="bg-white rounded-[28px] p-7 shadow-lg border border-[#F1F1F1]">
               <h3 className="text-xl font-bold text-[#2F2F2F] mb-4">Women’s Wellness</h3>
@@ -138,7 +153,6 @@ export default function Events() {
                 <li>• Emotional wellness practices</li>
               </ul>
             </div>
-
             {/* Therapy */}
             <div className="bg-white rounded-[28px] p-7 shadow-lg border border-[#F1F1F1]">
               <h3 className="text-xl font-bold text-[#2F2F2F] mb-4">Pain & Therapy Care</h3>
@@ -149,7 +163,6 @@ export default function Events() {
                 <li>• Breathing rehabilitation techniques</li>
               </ul>
             </div>
-
             {/* Kids */}
             <div className="bg-white rounded-[28px] p-7 shadow-lg border border-[#F1F1F1]">
               <h3 className="text-xl font-bold text-[#2F2F2F] mb-4">Kids (5–12 Years)</h3>
@@ -160,7 +173,6 @@ export default function Events() {
                 <li>• Healthy routine development</li>
               </ul>
             </div>
-
             {/* Fitness */}
             <div className="bg-white rounded-[28px] p-7 shadow-lg border border-[#F1F1F1]">
               <h3 className="text-xl font-bold text-[#2F2F2F] mb-4">Fitness & Lifestyle</h3>
@@ -171,7 +183,6 @@ export default function Events() {
                 <li>• Energy & stamina improvement</li>
               </ul>
             </div>
-
           </div>
 
           {/* CTA */}
@@ -180,7 +191,6 @@ export default function Events() {
               Start Even If You Are a Beginner
             </button>
           </div>
-
         </div>
       </section>
 
